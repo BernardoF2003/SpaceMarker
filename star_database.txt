@@ -1,0 +1,2 @@
+desconhecido(513, 279): (513, 279)
+desconhecido(676, 390): (676, 390)
