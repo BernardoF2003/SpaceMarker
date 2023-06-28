@@ -3,6 +3,7 @@ import pygame
 import tkinter as tk
 from tkinter import simpledialog
 from ast import literal_eval
+from math import sqrt
 
 # file loads
 pygame.init()
@@ -52,6 +53,13 @@ def load_database():
                     }
                 )
 
+# calculate and show the distance between the stars as a label above the stars connections
+# extra function
+def calculate_distance(star1, star2):
+    x1, y1 = star1['coordinates']
+    x2, y2 = star2['coordinates']
+    distance = sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+    return round(distance, 2)
 
 # main program
 if __name__ == "__main__":
@@ -76,8 +84,13 @@ if __name__ == "__main__":
                     try:
                         coordinate_x, coordinate_y = star['coordinates']
                         next_star_coordinate_x, next_star_coordinate_y = stars[i + 1]['coordinates']
+                        distance = calculate_distance(star, stars[i + 1])
+                        text = font.render(f'{distance:.2f}', True, (255, 255, 255))
+                        text_rect = text.get_rect(center = ((coordinate_x + next_star_coordinate_x) // 2,
+                                                           (coordinate_y + next_star_coordinate_y) // 2))
+                        window.blit(text, text_rect)
                         pygame.draw.line(background_image, (255, 255, 255), (coordinate_x, coordinate_y),
-                                         (next_star_coordinate_x, next_star_coordinate_y))
+                                        (next_star_coordinate_x, next_star_coordinate_y))
                     except IndexError:
                         pass
                 else:
@@ -88,7 +101,7 @@ if __name__ == "__main__":
             elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 center_x, center_y = pygame.mouse.get_pos()
                 star_add = tk.Tk()
-                star_add.iconbitmap(default='images/icon.ico')
+                star_add.iconbitmap(default="images/icon.ico")
                 star_add.withdraw()
                 dialog = simpledialog.askstring('Space', 'Nome da estrela:')
                 if dialog is None or dialog == '':
