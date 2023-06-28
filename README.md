@@ -6,4 +6,4 @@ estrela. Após esse processo é criado um ponto na imagem com o nome da estrela.
 
 Bernardo Di Domenico Ferrari - 1130327
 
-Link para download (.zip) - https://drive.google.com/file/d/1L6KmhwEqcwcfCDOWTFzuhdxGDS1DFANL/view?usp=drive_link 
+Link para download (.zip) - https://drive.google.com/file/d/1Xm4b9TTC06oqGD1rOwWEiH2baZm0UcG8/view?usp=drive_link
